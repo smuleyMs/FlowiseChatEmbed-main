@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My First HTML Page</title>
+  </head>
+  <body>
+    <h1>Welcome to My First HTML Page</h1>
+    <p>This is a paragraph.</p>
+
+    <script type="module">
+      let address = document.URL;
+      //var win = window, doc = document, docElem = doc.documentElement, body = doc.getElementsByTagName('body')[0];
+
+      localStorage.setItem('pageAddress', address);
+      localStorage.setItem('userEmail', "123@gmail.com");
+      import Chatbot from 'http://127.0.0.1:5500/dist/web.js';
+      Chatbot.init({
+        chatflowid: "2728b5f4-4749-470f-ac25-dd249df879bf",         
+        apiHost: "http://52.185.31.224:3000",
+        tealsExtension: {
+          pageAddress: localStorage.getItem('pageAddress'),
+          userEmail: localStorage.getItem('userEmail'),
+        },
+        theme: {
+          button: {
+            backgroundColor: '#327967',
+            right: 20,
+            bottom: 20,
+            size: 'medium',
+            iconColor: 'white',
+          },
+          chatWindow: {
+            title: 'TEALS Bot',
+            backgroundColor: '#ffffff',
+            height: window.innerHeight - 100,
+            width: 400,
+            fontSize: 16,
+            poweredByTextColor: '#303235',
+            botMessage: {
+              backgroundColor: '#f7f8ff',
+              textColor: '#303235',
+              showAvatar: true,
+            },
+            userMessage: {
+              backgroundColor: '#327967',
+              textColor: '#ffffff',
+              showAvatar: true,
+              avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png',
+            },
+            textInput: {
+              placeholder: 'Type your question',
+              backgroundColor: '#ffffff',
+              textColor: '#303235',
+              sendButtonColor: '#327967',
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
