@@ -55,7 +55,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
   const [messages, setMessages] = createSignal<MessageType[]>(
     [
       {
-        message: props.welcomeMessage ?? defaultWelcomeMessage,
+        message: `Hi ${props.tealsExtension?.userName || 'user'}! How can I help?`,
         type: 'apiMessage',
       },
     ],
@@ -69,8 +69,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
     console.log(props.tealsExtension?.pageAddress);
     setMessages([
       {//todo hide this message
-        message: props.welcomeMessage ?? `Hiiiiiii there! I see you are on page ${props.tealsExtension?.pageAddress}. Your email address is ${props.tealsExtension?.userEmail} How can I help?`,
-        type: 'apiMessage',
+        message: `Hi ${props.tealsExtension?.userName || 'user'}! How can I help?`,type: 'apiMessage',
       },
     ]);
     //localStorage.setItem(`${props.chatflowid}_EXTERNAL`, JSON.stringify({ chatId: chatId(), chatHistory: allMessage }));
@@ -154,9 +153,9 @@ export const Bot = (props: BotProps & { class?: string }) => {
       addChatMessage(messages);
       return messages;
     });
-
+    const newMessage = `My name is ${props.tealsExtension?.userName}. My email address is ${props.tealsExtension?.userEmail}. My role is ${props.tealsExtension?.role}. I am on page ${props.tealsExtension?.pageAddress}. My question is ${value}`;
     const body: IncomingInput = {
-      question: value,
+      question: newMessage,
       history: messageList,
       chatId: chatId(),
     };

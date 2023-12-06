@@ -53,5 +53,7 @@ export type ButtonTheme = {
 
 export type TealsExtension = {
   userEmail?: string;
+  userName?: string;
   pageAddress?: string;
+  role?: string;
 }
