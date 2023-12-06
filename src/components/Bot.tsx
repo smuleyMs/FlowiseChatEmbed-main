@@ -327,8 +327,8 @@ export const Bot = (props: BotProps & { class?: string }) => {
                       message={message.message}
                       backgroundColor={props.userMessage?.backgroundColor}
                       textColor={props.userMessage?.textColor}
-                      showAvatar={props.userMessage?.showAvatar}
-                      avatarSrc={props.userMessage?.avatarSrc}
+                      showAvatar={true}
+                      avatarSrc={"https://th.bing.com/th/id/OIP.VsXkcf_81Vi51QiDCveKOgHaHa?rs=1&pid=ImgDetMain"}
                     />
                   )}
                   {message.type === 'apiMessage' && (
@@ -338,8 +338,8 @@ export const Bot = (props: BotProps & { class?: string }) => {
                       apiHost={props.apiHost}
                       backgroundColor={props.botMessage?.backgroundColor}
                       textColor={props.botMessage?.textColor}
-                      showAvatar={props.botMessage?.showAvatar}
-                      avatarSrc={props.botMessage?.avatarSrc}
+                      showAvatar={true}
+                      avatarSrc={"https://freesvg.org/img/1538298822.png"}
                     />
                   )}
                   {message.type === 'userMessage' && loading() && index() === messages().length - 1 && <LoadingBubble />}
