@@ -1,8 +1,8 @@
-A list of documents is shown below in json format.
+A list of text from Source Documents is shown below in json format.
 
 These listed documents are used as context to answer the given question. 
 
-The task is to score the relevance between the documents and the potential answer to the given question in the range of 1 to 5.  
+The task is to score the relevance between the documents to the given question in the range of 1 to 5.  
 
 1 means none of the documents is relevant to the question at all. 5 means either one of the documents or combination of a few documents is ideal for answering the given question. 
 
