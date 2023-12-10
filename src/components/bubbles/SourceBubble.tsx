@@ -15,7 +15,7 @@ export const SourceBubble = (props: Props) => (
         class="px-2 py-1 ml-1 whitespace-pre-wrap max-w-full chatbot-host-bubble"
         data-testid="host-bubble"
         style={{
-          width: 'max-content',
+          width: '80px',
           'max-width': '80px',
           'font-size': '13px',
           'border-radius': '15px',
@@ -23,6 +23,8 @@ export const SourceBubble = (props: Props) => (
           'text-overflow': 'ellipsis',
           overflow: 'hidden',
           'white-space': 'nowrap',
+          display: 'flex',
+          'justify-content': 'space-around',
         }}
       >
         {props.pageContent}

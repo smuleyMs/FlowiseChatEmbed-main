@@ -5,7 +5,5 @@ export const defaultBotProps: BubbleProps = {
   apiHost: undefined,
   chatflowConfig: undefined,
   theme: undefined,
-  // pageAddress: undefined,
-  // userEmail: undefined,
   tealsExtension: undefined,
 };
