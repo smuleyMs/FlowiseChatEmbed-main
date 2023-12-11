@@ -15,6 +15,7 @@ const defaultRight = '20';
 export const BubbleButton = (props: Props) => {
   return (
     <button
+      title= {props.isBotOpened ? 'Close Teals AI chatbot': 'Open Teals AI chatbot'}
       part="button"
       onClick={() => props.toggleBot()}
       class={

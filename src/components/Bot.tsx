@@ -42,6 +42,7 @@ export type BotProps = {
 };
 
 const defaultWelcomeMessage = `Hi there! How can I help?`;
+let welcomeMessage = "";
 
 export const Bot = (props: BotProps & { class?: string }) => {
   let chatContainer: HTMLDivElement | undefined;
@@ -67,12 +68,13 @@ export const Bot = (props: BotProps & { class?: string }) => {
 
   createEffect(() => {
     console.log(props.tealsExtension?.pageAddress);
+    welcomeMessage = props.tealsExtension?.userName ? `Hi ${props.tealsExtension?.userName || 'user'}! How can I help?` : welcomeMessage;
     setMessages([
       {//todo hide this message
-        message: `Hi ${props.tealsExtension?.userName || 'user'}! How can I help?`,type: 'apiMessage',
+        message: welcomeMessage,
+        type: 'apiMessage',
       },
     ]);
-    //localStorage.setItem(`${props.chatflowid}_EXTERNAL`, JSON.stringify({ chatId: chatId(), chatHistory: allMessage }));
   });
 
   onMount(() => {
@@ -145,8 +147,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
     scrollToBottom();
 
     // Send user question and history to API
-    const welcomeMessage = props.welcomeMessage ?? defaultWelcomeMessage;
-    const messageList = messages().filter((msg) => msg.message !== welcomeMessage);
+    const messageList = messages().filter((msg) => msg.message !== (welcomeMessage ?? defaultWelcomeMessage));
 
     setMessages((prevMessages) => {
       const messages: MessageType[] = [...prevMessages, { message: value, type: 'userMessage' }];
@@ -207,7 +208,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
       setChatId(uuidv4());
       setMessages([
         {
-          message: props.welcomeMessage ?? defaultWelcomeMessage,
+          message: welcomeMessage ?? defaultWelcomeMessage,
           type: 'apiMessage',
         },
       ]);
@@ -273,7 +274,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
       setLoading(false);
       setMessages([
         {
-          message: props.welcomeMessage ?? defaultWelcomeMessage,
+          message: welcomeMessage ?? defaultWelcomeMessage,
           type: 'apiMessage',
         },
       ]);
@@ -344,13 +345,13 @@ export const Bot = (props: BotProps & { class?: string }) => {
                   )}
                   {message.type === 'userMessage' && loading() && index() === messages().length - 1 && <LoadingBubble />}
                   {message.sourceDocuments && message.sourceDocuments.length && (
-                    <div style={{ display: 'flex', 'flex-direction': 'row', width: '100%' }}>
+                    <div style={{ display: 'flex', 'flex-direction': 'row', width: '100%', "flex-wrap": 'wrap' }}>
                       <For each={[...removeDuplicateURL(message)]}>
-                        {(src) => {
+                        {(src, pos) => {
                           const URL = isValidURL(src.metadata.source);
                           return (
                             <SourceBubble
-                              pageContent={URL ? URL.pathname : src.pageContent}
+                              pageContent={`Ref ${pos()+1}`}
                               metadata={src.metadata}
                               onSourceClick={() => {
                                 if (URL) {
