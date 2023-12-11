@@ -1,22 +1,20 @@
-A list of text from Source Documents is shown below in json format.
+A list of Source Documents is provided in json format. 
 
-These listed documents are used as context to answer the given question. 
+These listed source documents are used as context to answer the given question. 
 
-The task is to score the relevance between the documents to the given question in the range of 1 to 5.  
+The task is to score the relevance between the source documents to the given question in the range of 1 to 5.  
 
-1 means none of the documents is relevant to the question at all. 5 means either one of the documents or combination of a few documents is ideal for answering the given question. 
+1 means none of the source documents is relevant to the question at all. 5 means either one of the source documents or combination of a few source documents is ideal for answering the given question. 
 
 Think through step by step: 
 
-1. Summarize each given document first 
+1. Determine the underlying intent of the given question.
 
-2. Determine the underlying intent of the given question.
+2. Measure how suitable each source document is to the given question.
 
-3. Measure how suitable each document to the given question.  
+3. If you can find information related to the given QUESTION in the given SOURCE DOCUMENTS, rate the relvance highly. If none of the source documents have any informaion elatd to the given questions, rate the relevance as 1.
 
-4. Summarize the overall relevance of the given list of documents to the given question, note that the answer to the question can soley come from a single document or a combination of multiple documents.  
-
-5. Rate the overall relevance of the given list of documents to the given question on a Likert scale from 1 to 5. (higher better) 
+4. Rate the relevance of the most relevant source document from the given list of source documents, to the given question on a Likert scale from 1 to 5. (higher better) 
 
    5: strongly relevant
 
